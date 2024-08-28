@@ -1,6 +1,6 @@
 # Laravel Vueform Example
 
-This repo is used to demonstrate how to use Vueform with Laravel and to reproduce issues.
+This repo is used to demonstrate how to use [Vueform](https://github.com/vueform/vueform) with Laravel and to reproduce issues.
 
 It consists of:
 * Laravel 11 Breeze with Tailwind, Inertia, Vue and TypeScript
