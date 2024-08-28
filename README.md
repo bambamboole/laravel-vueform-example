@@ -31,6 +31,12 @@ npm run dev
 php artisan serve
 ```
 
+```bash
+# Seed database
+php artisan migrate:fresh --seed
+```
+
+You can login via `test@example.com` and `password`
 
 ## Things to tackle 
 Here is a list of things I want to showcase with this repo:
