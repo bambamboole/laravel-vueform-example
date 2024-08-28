@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Forms\Elements\ButtonElement;
+use App\Forms\Elements\TextElement;
+use App\Forms\Form;
+use App\Forms\Schema;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
@@ -20,6 +24,16 @@ class ProfileController extends Controller
     {
         return Inertia::render('Profile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
+            'updatePasswordForm' => new Form(
+                endpoint: route('password.update'),
+                schema: new Schema([
+                    new TextElement('current_password', label: 'Current Password', attrs: ['type' => 'password']),
+                    new TextElement('password', label: 'New Password', attrs: ['type' => 'password']),
+                    new TextElement('password_confirmation', label: 'Confirm Password', attrs: ['type' => 'password']),
+                    new ButtonElement('submit'),
+                ]),
+                method: 'PUT',
+            ),
             'status' => session('status'),
         ]);
     }
