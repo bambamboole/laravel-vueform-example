@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import {router, useForm} from '@inertiajs/vue3';
-import {onMounted, ref} from "vue";
+import {HTMLAttributes, onMounted, ref} from "vue";
 
 const props = defineProps<{
     schema: any;
     resetOnSuccess?: boolean;
+    class?: HTMLAttributes['class'];
 }>();
 
 const vueForm = ref<any>(null);
@@ -57,5 +58,5 @@ const submitForm = async (FormData: FormData, form$: any) => {
 </script>
 
 <template>
-    <Vueform ref="vueForm" :endpoint="submitForm" :schema="schema.schema" :display-errors="false"/>
+    <Vueform ref="vueForm" :endpoint="submitForm" :schema="schema.schema" :display-errors="false" :class="props.class"/>
 </template>

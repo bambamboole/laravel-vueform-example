@@ -8,6 +8,7 @@ import Form from "@/Components/Form.vue";
 
 defineProps<{
     mustVerifyEmail?: boolean;
+    updateProfileInformationForm: any;
     updatePasswordForm: any;
     status?: string;
 }>();
@@ -24,15 +25,16 @@ defineProps<{
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <UpdateProfileInformationForm
-                        :must-verify-email="mustVerifyEmail"
-                        :status="status"
-                        class="max-w-xl"
-                    />
+<!--                    <UpdateProfileInformationForm-->
+<!--                        :must-verify-email="mustVerifyEmail"-->
+<!--                        :status="status"-->
+<!--                        class="max-w-xl"-->
+<!--                    />-->
+                    <Form :schema="updateProfileInformationForm" class="max-w-xl" />
                 </div>
 
                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                    <Form :schema="updatePasswordForm" :reset-on-success="true" />
+                    <Form :schema="updatePasswordForm" :reset-on-success="true" class="max-w-xl" />
                 </div>
 
                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Forms\Elements\ButtonElement;
+use App\Forms\Elements\GroupElement;
+use App\Forms\Elements\HiddenElement;
+use App\Forms\Elements\StaticElement;
 use App\Forms\Elements\TextElement;
 use App\Forms\Form;
 use App\Forms\Schema;
@@ -24,6 +27,21 @@ class ProfileController extends Controller
     {
         return Inertia::render('Profile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
+            'updateProfileInformationForm' => new Form(
+                endpoint: route('profile.update'),
+                schema: new Schema([
+                    new HiddenElement('emailVerified', value: $request->user()->hasVerifiedEmail()),
+                    new TextElement('name', value: $request->user()->name, label: 'Name'),
+                    new TextElement('email', value: $request->user()->email, label: 'Email'),
+                    new GroupElement('verify', new Schema([
+                        new StaticElement('foo', content: 'its me'),
+                    ]),
+                    conditions: [['emailVerified', false]],
+                    ),
+                    new ButtonElement('submit'),
+                ]),
+                method: 'PATCH',
+            ),
             'updatePasswordForm' => new Form(
                 endpoint: route('password.update'),
                 schema: new Schema([
