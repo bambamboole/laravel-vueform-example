@@ -8,3 +8,25 @@ It consists of:
 * PHP classes (DTOs) to build up forms in the backend in (/app/Forms)
 * A Vue wrapper component to inject the correct values and handle the submission via inertias useForm
 * A POC for the update password form
+
+
+## Installation
+
+```bash
+cp .env.example .env
+composer install
+npm install
+npm run build
+```
+
+## Usage
+
+```bash
+# Vite dev server
+npm run dev
+```
+
+```bash
+# If no Herv or Valet setup exists
+php artisan serve
+```
