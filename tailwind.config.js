@@ -22,4 +22,6 @@ export default {
     },
 
     plugins: [forms, vueform],
+    
+    vfDarkMode: false,
 };
