@@ -50,6 +50,7 @@ const submitForm = async (FormData: FormData, form$: any) => {
                 form$.clear();
                 form$.reset();
             }
+            form$.messageBag.append('Password successfully changed', 'success')
         }
     });
 };
