@@ -42,9 +42,12 @@ You can login via `test@example.com` and `password`
 Here is a list of things I want to showcase with this repo:
 * [x] Basic setup with Vueform
 * [x] POC Update password form
-* [ ] Show feedback of successful form submission
-* [ ] Conditional fields (as needed for update profile info when the email is not verified it should show an extra link)
-* [ ] Make a proper inertia Link component via StaticElement which does not suck
+* [x] Show feedback of successful form submission
+* [x] POC Update profile form
+* [ ] Conditional fields (as needed for update profile info when the email is not verified it should show an extra link) -> I have no clue why this doesnt work.
+* [ ] Make a proper inertia Link component which does not suck.
+* [ ] Should we reimplement [inertias useForm](https://github.com/inertiajs/inertia/blob/master/packages/vue3/src/useForm.ts) or should we continue to build upon it ?
+* [ ] Filled fields have changed border color
 
 ## Things NOT to tackle (for now)
 * [ ] Add a form with a file upload. This is a bit more complex and should be tackled separately

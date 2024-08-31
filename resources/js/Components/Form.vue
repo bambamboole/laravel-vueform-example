@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {router, useForm} from '@inertiajs/vue3';
+import {router, useForm, usePage} from '@inertiajs/vue3';
 import {HTMLAttributes, onMounted, ref} from "vue";
 
 const props = defineProps<{
@@ -51,6 +51,19 @@ const submitForm = async (FormData: FormData, form$: any) => {
                 form$.clear();
                 form$.reset();
             }
+        },
+        onFinish: () => {
+            const flash = usePage().props.flash
+            if (flash.success) {
+                form$.messageBag.append(flash.success, 'success')
+
+            }
+            if (flash.error) {
+                form$.messageBag.append(flash.error, 'error')
+            }
+            setTimeout(() => {
+                form$.messageBag.clear()
+            }, 2000)
         }
     });
 };

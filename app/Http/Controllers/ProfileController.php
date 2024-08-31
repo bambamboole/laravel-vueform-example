@@ -33,8 +33,9 @@ class ProfileController extends Controller
                     new HiddenElement('emailVerified', value: $request->user()->hasVerifiedEmail()),
                     new TextElement('name', value: $request->user()->name, label: 'Name'),
                     new TextElement('email', value: $request->user()->email, label: 'Email'),
-                    new GroupElement('verify', new Schema([
-                        new StaticElement('foo', content: 'its me'),
+                    new GroupElement('verifyEmail', new Schema([
+                        new StaticElement('info', content: 'Your email address must be verified.'),
+                        new StaticElement('link', ['template' => '<Component is="Link" href="'.route('verification.send').'" v-html="\' Click here to re-send the verification email.\'" method="post"/>']),
                     ]),
                     conditions: [['emailVerified', false]],
                     ),
@@ -48,7 +49,7 @@ class ProfileController extends Controller
                     new TextElement('current_password', label: 'Current Password', attrs: ['type' => 'password']),
                     new TextElement('password', label: 'New Password', attrs: ['type' => 'password']),
                     new TextElement('password_confirmation', label: 'Confirm Password', attrs: ['type' => 'password']),
-                    new ButtonElement('submit'),
+                    new ButtonElement('update_password','Update Password'),
                 ]),
                 method: 'PUT',
             ),
@@ -69,7 +70,7 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit');
+        return Redirect::route('profile.edit')->with('success', 'Profile updated.');
     }
 
     /**

@@ -1,7 +1,7 @@
 import './bootstrap';
 import '../css/app.css';
-
-import { createApp, h, DefineComponent } from 'vue';
+import {createApp } from 'vue/dist/vue.esm-bundler.js';
+import { h, DefineComponent } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
