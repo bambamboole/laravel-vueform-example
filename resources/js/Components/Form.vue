@@ -7,7 +7,7 @@ const props = defineProps<{
     resetOnSuccess?: boolean;
     class?: HTMLAttributes['class'];
 }>();
-
+const schemaRef = ref(props.schema.schema);
 const vueForm = ref<any>(null);
 
 const fillValues = () => {
@@ -71,5 +71,5 @@ const submitForm = async (FormData: FormData, form$: any) => {
 </script>
 
 <template>
-    <Vueform ref="vueForm" :endpoint="submitForm" :schema="schema.schema" :display-errors="false" :class="props.class"/>
+    <Vueform ref="vueForm" :endpoint="submitForm" :schema="schemaRef" :display-errors="false" :class="props.class"/>
 </template>

@@ -30,14 +30,14 @@ class ProfileController extends Controller
             'updateProfileInformationForm' => new Form(
                 endpoint: route('profile.update'),
                 schema: new Schema([
-                    new HiddenElement('emailVerified', value: $request->user()->hasVerifiedEmail()),
+                    new HiddenElement('emailVerified', value: $request->user()->hasVerifiedEmail() ? 'yes' : 'no'),
                     new TextElement('name', value: $request->user()->name, label: 'Name'),
                     new TextElement('email', value: $request->user()->email, label: 'Email'),
                     new GroupElement('verifyEmail', new Schema([
                         new StaticElement('info', content: 'Your email address must be verified.'),
                         new StaticElement('link', ['template' => '<Component is="Link" href="'.route('verification.send').'" v-html="\' Click here to re-send the verification email.\'" method="post"/>']),
                     ]),
-                    conditions: [['emailVerified', false]],
+                    conditions: [['emailVerified', 'no']],
                     ),
                     new ButtonElement('submit'),
                 ]),
