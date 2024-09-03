@@ -46,7 +46,7 @@ Here is a list of things I want to showcase with this repo:
 * [x] POC Update profile form
 * [x] Conditional fields 
 * [x] Make a proper inertia Link component which does not suck. -> use custom element -> https://vueform.com/docs/creating-elements
-* [x] Figure out why Link can't be imported in LinkElement.vue. I had now to import it globally in app.ts
+* [ ] Figure out why Link can't be imported in LinkElement.vue. I had now to import it globally in app.ts
 * [ ] Reimplement needed [inertias useForm](https://github.com/inertiajs/inertia/blob/master/packages/vue3/src/useForm.ts) logic to be more flexible
 * [ ] Filled fields have changed border color
 * [ ] Add more types
