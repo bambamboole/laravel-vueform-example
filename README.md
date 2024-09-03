@@ -44,10 +44,13 @@ Here is a list of things I want to showcase with this repo:
 * [x] POC Update password form
 * [x] Show feedback of successful form submission
 * [x] POC Update profile form
-* [x] Conditional fields (as needed for update profile info when the email is not verified it should show an extra link) -> It is kinda working but needs a page refresh since something is not reactive (maybe)
+* [x] Conditional fields 
 * [x] Make a proper inertia Link component which does not suck. -> use custom element -> https://vueform.com/docs/creating-elements
-* [ ] Should we reimplement [inertias useForm](https://github.com/inertiajs/inertia/blob/master/packages/vue3/src/useForm.ts) or should we continue to build upon it ? -> we will reimplement it and use it as inspiration
-* [ ] Filled fields have changed border color 
+* [x] Figure out why Link can't be imported in LinkElement.vue. I had now to import it globally in app.ts
+* [ ] Reimplement needed [inertias useForm](https://github.com/inertiajs/inertia/blob/master/packages/vue3/src/useForm.ts) logic to be more flexible
+* [ ] Filled fields have changed border color
+* [ ] Add more types
+* [ ] Extract into npm package
 
 ## Things NOT to tackle (for now)
 * [ ] Add a form with a file upload. This is a bit more complex and should be tackled separately
