@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Forms\Elements\ButtonElement;
 use App\Forms\Elements\GroupElement;
 use App\Forms\Elements\HiddenElement;
+use App\Forms\Elements\LinkElement;
 use App\Forms\Elements\StaticElement;
 use App\Forms\Elements\TextElement;
 use App\Forms\Form;
@@ -26,16 +27,19 @@ class ProfileController extends Controller
     public function edit(Request $request): Response
     {
         return Inertia::render('Profile/Edit', [
+            'random' => uniqid(),
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'updateProfileInformationForm' => new Form(
                 endpoint: route('profile.update'),
                 schema: new Schema([
                     new HiddenElement('emailVerified', value: $request->user()->hasVerifiedEmail() ? 'yes' : 'no'),
-                    new TextElement('name', value: $request->user()->name, label: 'Name'),
-                    new TextElement('email', value: $request->user()->email, label: 'Email'),
+                    new HiddenElement('status', value: session('status')),
+                    new TextElement('name', value: $request->user()->name),
+                    new TextElement('email', value: $request->user()->email),
                     new GroupElement('verifyEmail', new Schema([
                         new StaticElement('info', content: 'Your email address must be verified.'),
-                        new StaticElement('link', ['template' => '<Component is="Link" href="'.route('verification.send').'" v-html="\' Click here to re-send the verification email.\'" method="post"/>']),
+                        new LinkElement('link', route('verification.send'), 'Click here to re-send the verification email.', 'post', conditions: [['status', '!=','verification-link-sent']]),
+                        new StaticElement('emailSent', content: 'A new verification link has been sent to your email address.', conditions: [['status', 'verification-link-sent']]),
                     ]),
                     conditions: [['emailVerified', 'no']],
                     ),

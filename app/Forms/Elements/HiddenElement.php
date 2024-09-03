@@ -7,6 +7,6 @@ class HiddenElement extends FormElement
     public function __construct(
         public readonly string $name,
         public readonly mixed $value,
-        public readonly bool $meta = false,
+        public readonly bool $meta = true,
     ) {}
 }

@@ -32,10 +32,10 @@ class HandleInertiaRequests extends Middleware
     {
         return [
             ...parent::share($request),
-            'flash' => Inertia::always([
+            'flash' => Inertia::always(array_filter([
                 'success' => fn () => $request->session()->pull('success'),
                 'error' => fn () => $request->session()->get('error'),
-            ]),
+            ])),
             'auth' => [
                 'user' => $request->user(),
             ],

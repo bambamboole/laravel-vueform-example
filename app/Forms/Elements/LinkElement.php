@@ -2,14 +2,14 @@
 
 namespace App\Forms\Elements;
 
-class LinkElement extends StaticElement
+class LinkElement extends FormElement
 {
     public function __construct(
         public string $name,
         public readonly string $href,
-        public readonly string $text,
+        public readonly string $content,
         public readonly string $method = 'get',
+        public readonly ?array $conditions = null,
     ) {
-        parent::__construct($name, ['template' => sprintf('<Link href="%s" v-html="\'%s\'" method="%s"/>', $href, $text, $method)]);
     }
 }
